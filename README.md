@@ -1,8 +1,10 @@
 # alpine-drupal8
-Drupal 8 docker image with Alpine Linux, Nginx and PHP
+Drupal 8 docker image with Alpine Linux, Nginx and PHP7
 
-## How to Build
+## How to Build image
+```
 sudo docker build -t drupal8 .
+```
 
 ## How to run (you will be dropped into the docker container)
 ```
