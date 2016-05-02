@@ -1,0 +1,4 @@
+/usr/share/nginx/html/modules true nginx 0644 0755
+/usr/share/nginx/html/profiles true nginx 0644 0755
+/usr/share/nginx/html/sites/default true nginx 0644 0755
+/usr/share/nginx/html/themes true nginx 0644 0755
