@@ -9,6 +9,7 @@ RUN apk upgrade -U && \
     php7-session \
     php7-sqlite3 \
     php7-mysqlnd \
+    php7-pdo_sqlite \
     git \
     tar \
     gzip 
