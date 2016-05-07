@@ -24,7 +24,7 @@ RUN wget -O /usr/local/bin/drush http://files.drush.org/drush.phar && chmod 700 
 
 # download drupal
 RUN cd /tmp && \
-    drupal site:new drupal 8.1.0 && \
+    drupal site:new drupal --latest && \
     rm -rf /usr/share/nginx/html && \
     mv -f /tmp/drupal /usr/share/nginx/html && \
     mv /usr/share/nginx/html/sites/default /usr/share/nginx/html/sites/default.init
