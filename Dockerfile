@@ -12,7 +12,8 @@ RUN apk upgrade -U && \
     php7-pdo_sqlite \
     git \
     tar \
-    gzip 
+    gzip \
+    ca-certificates
 
 COPY /rootfs /
 
@@ -32,7 +33,7 @@ RUN cd /tmp && \
 # fix permissions
 RUN chown -Rf nginx.nginx /usr/share/nginx/html
 
-VOLUME ["/usr/share/nginx/html/sites/default"]
+VOLUME ["/usr/share/nginx/html/sites"]
 VOLUME ["/usr/share/nginx/html/modules"]
 VOLUME ["/usr/share/nginx/html/profiles"]
 VOLUME ["/usr/share/nginx/html/themes"]
