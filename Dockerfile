@@ -38,4 +38,6 @@ VOLUME ["/usr/share/nginx/html/modules"]
 VOLUME ["/usr/share/nginx/html/profiles"]
 VOLUME ["/usr/share/nginx/html/themes"]
 
+WORKDIR /usr/share/nginx/html
+
 ENTRYPOINT ["/init"]
