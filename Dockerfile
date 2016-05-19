@@ -13,7 +13,8 @@ RUN apk upgrade -U && \
     git \
     tar \
     gzip \
-    ca-certificates
+    ca-certificates \
+    mysql-client
 
 COPY /rootfs /
 
