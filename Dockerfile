@@ -3,6 +3,7 @@ MAINTAINER bytepark GmbH <code@bytepark.de>
 
 # Add some tools
 RUN apk upgrade -U && \
+    apk add 'tar=1.28-r1' --update-cache --repository http://nl.alpinelinux.org/alpine/v3.3/main && \
     apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
     php7-zlib \
     php7-gd \
@@ -11,7 +12,6 @@ RUN apk upgrade -U && \
     php7-mysqlnd \
     php7-pdo_sqlite \
     git \
-    tar \
     gzip \
     ca-certificates \
     mysql-client \
@@ -19,25 +19,23 @@ RUN apk upgrade -U && \
 
 COPY /rootfs /
 
+RUN chown root:root /usr/local/bin/fixperm.sh && \
+    chmod 700 /usr/local/bin/fixperm.sh
+
 # Install Drupal console
 RUN curl https://drupalconsole.com/installer -L -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal && /usr/local/bin/drupal init && /usr/local/bin/drupal check
 
 # Install drush
 RUN wget -O /usr/local/bin/drush http://files.drush.org/drush.phar && chmod 700 /usr/local/bin/drush
 
-# download drupal
+## download drupal
 RUN cd /tmp && \
     drupal site:new drupal --latest && \
     rm -rf /usr/share/nginx/html && \
     mv -f /tmp/drupal /usr/share/nginx/html && \
     mv /usr/share/nginx/html/sites/default /usr/share/nginx/html/sites/default.init
 
-# Add script fixperm.sh
-ADD scripts/fixperm.sh /usr/local/bin/fixperm.sh
-
-RUN chown root:root /usr/local/bin/fixperm.sh && \
-    chmod 700 /usr/local/bin/fixperm.sh && \
-    fixperm.sh
+RUN fixperm.sh
 
 VOLUME ["/usr/share/nginx/html/sites"]
 VOLUME ["/usr/share/nginx/html/modules"]
