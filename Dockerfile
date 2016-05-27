@@ -14,7 +14,8 @@ RUN apk upgrade -U && \
     tar \
     gzip \
     ca-certificates \
-    mysql-client
+    mysql-client \
+    openssh
 
 COPY /rootfs /
 
@@ -31,8 +32,12 @@ RUN cd /tmp && \
     mv -f /tmp/drupal /usr/share/nginx/html && \
     mv /usr/share/nginx/html/sites/default /usr/share/nginx/html/sites/default.init
 
-# fix permissions
-RUN chown -Rf nginx.nginx /usr/share/nginx/html
+# Add script fixperm.sh
+ADD scripts/fixperm.sh /usr/local/bin/fixperm.sh
+
+RUN chown root:root /usr/local/bin/fixperm.sh && \
+    chmod 700 /usr/local/bin/fixperm.sh && \
+    fixperm.sh
 
 VOLUME ["/usr/share/nginx/html/sites"]
 VOLUME ["/usr/share/nginx/html/modules"]
