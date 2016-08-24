@@ -15,7 +15,8 @@ RUN apk upgrade -U && \
     gzip \
     ca-certificates \
     mysql-client \
-    openssh
+    openssh \
+    imagemagick
 
 COPY /rootfs /
 
