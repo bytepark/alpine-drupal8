@@ -23,15 +23,12 @@ COPY /rootfs /
 RUN chown root:root /usr/local/bin/fixperm.sh && \
     chmod 700 /usr/local/bin/fixperm.sh
 
-# Install Drupal console
-RUN curl https://drupalconsole.com/installer -L -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal && /usr/local/bin/drupal init && /usr/local/bin/drupal check
-
 # Install drush
 RUN wget -O /usr/local/bin/drush http://files.drush.org/drush.phar && chmod 700 /usr/local/bin/drush
 
 ## download drupal
 RUN cd /tmp && \
-    drupal site:new drupal --latest && \
+    drush dl drupal --drupal-project-rename=drupal && \
     rm -rf /usr/share/nginx/html && \
     mv -f /tmp/drupal /usr/share/nginx/html && \
     mv /usr/share/nginx/html/sites/default /usr/share/nginx/html/sites/default.init
