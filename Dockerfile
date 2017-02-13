@@ -35,6 +35,7 @@ RUN cd /tmp && \
 
 RUN fixperm.sh
 
+VOLUME ["/usr/share/nginx/html"]
 VOLUME ["/usr/share/nginx/html/sites"]
 VOLUME ["/usr/share/nginx/html/modules"]
 VOLUME ["/usr/share/nginx/html/profiles"]
