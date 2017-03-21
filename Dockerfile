@@ -1,11 +1,10 @@
-FROM bytepark/alpine-nginx-php7:latest
+FROM bytepark/alpine-nginx-php7:1.0
 MAINTAINER bytepark GmbH <code@bytepark.de>
 
 # Add some tools
 RUN apk upgrade -U && \
-    apk add 'tar=1.28-r1' --update-cache --repository http://nl.alpinelinux.org/alpine/v3.3/main && \
-    apk --update --repository=http://dl-4.alpinelinux.org/alpine/edge/testing add \
-    php7-zlib \
+    apk --update add \
+    tar \
     php7-gd \
     php7-session \
     php7-sqlite3 \
