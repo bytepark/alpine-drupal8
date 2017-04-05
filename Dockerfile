@@ -1,4 +1,4 @@
-FROM bytepark/alpine-nginx-php7:1.0
+FROM bytepark/alpine-nginx-php7:1.1
 MAINTAINER bytepark GmbH <code@bytepark.de>
 
 # Add some tools
