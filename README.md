@@ -1,5 +1,5 @@
 # alpine-drupal8
-Drupal 8 docker image with Alpine Linux, Nginx and PHP7
+Drupal 8.3.1 docker image with Alpine Linux, Nginx and PHP7
 
 ## Content
 Container contains latest drupal version availabe.
